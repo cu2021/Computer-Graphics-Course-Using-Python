@@ -23,10 +23,9 @@ def f(x):
         y: The computed value of the function f(x) for the given x.
     """
     return (300
-            - 100 * math.cos((2 * math.pi * x) / 100)
-            + 30 * math.cos((4 * math.pi * x) / 100)
-            + 6 * math.cos((6 * math.pi * x) / 100))
-
+            - ((100 * math.cos((2 * math.pi * x) / 100)))
+            + (30 * math.cos((4 * math.pi * x) / 100))
+            + (6 * math.cos((6 * math.pi * x) / 100)))
 
 def transform(x, y, y_min, y_max):
     """
