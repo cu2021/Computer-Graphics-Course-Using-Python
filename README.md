@@ -13,6 +13,7 @@ This repository contains a collection of examples and exercises developed for a 
 * **`DotPlot(Curve).py`**: Plots curves using dot representations.
 * **`BigDipper.py`**: Renders the Big Dipper constellation using coordinate data.
 * **`data/`**: Contains data files (e.g., `dino.dat`) used for polyline rendering.
+* **`MakingLineDrawings.py`**: Plots curves using line strips.
 
 ## 🛠️ Prerequisites
 
