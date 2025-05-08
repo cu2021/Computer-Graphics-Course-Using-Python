@@ -68,8 +68,8 @@ def myInit():
     glClearColor(1.0, 1.0, 1.0, 1.0)
     # Set drawing color to black
     glColor3f(0.0, 0.0, 0.0)
-    # Set point size for drawing (for visualizing individual points)
-    glPointSize(2.0)
+    # Set Line Width
+    glLineWidth(2.0)
     # Set matrix mode to projection (set up the view of the 2D space)
     glMatrixMode(GL_PROJECTION)
     # Reset the matrix to identity (clear any previous transformations)

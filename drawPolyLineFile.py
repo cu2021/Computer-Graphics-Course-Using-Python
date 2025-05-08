@@ -56,14 +56,14 @@ def drawPolyLineFile(filePath):
 def myInit():
     """
     Initialize OpenGL settings: background color, drawing color,
-    point size, and 2D projection setup.
+    line width, and 2D projection setup.
     """
     # Set background to white
     glClearColor(1.0, 1.0, 1.0, 1.0)
     # Set drawing color to black
     glColor3f(0.0, 0.0, 0.0)
-    # Set point size
-    glPointSize(4.0)
+    # Set line width
+    glLineWidth(2.0)
     # Set matrix mode to projection
     glMatrixMode(GL_PROJECTION)
     # Reset projection matrix
