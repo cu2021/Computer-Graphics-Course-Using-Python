@@ -14,6 +14,9 @@ This repository contains a collection of examples and exercises developed for a 
 * **`BigDipper.py`**: Renders the Big Dipper constellation using coordinate data.
 * **`data/`**: Contains data files (e.g., `dino.dat`) used for polyline rendering.
 * **`MakingLineDrawings.py`**: Plots curves using line strips.
+* **`hardwireHouse.py`**: Drawing a house by defining all its vertices coordinates.
+* **`parameterizedHouse.py`**: Drawing a house by defining only the peak coordinates, the house width, and its height. 
+* **`drawPolyLine.py`**: Drawing Polyline using drawPolyLine Function. 
 
 ## 🛠️ Prerequisites
 
