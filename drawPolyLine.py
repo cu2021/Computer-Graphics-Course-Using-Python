@@ -61,9 +61,13 @@ def myDisplay():
     """
     glClear(GL_COLOR_BUFFER_BIT)
 
-    # Create a triangle or any shape
-    poly = [GLintPoint(100, 100),GLintPoint(200, 100),
-            GLintPoint(200, 200), GLintPoint(100, 200)]
+    # Create a triangle or any shape;
+    # You have to use your math skills to define the vertices.
+    poly = [
+        GLintPoint(100, 100), # Top vertex
+        GLintPoint(50, 50),  # Bottom-left vertex
+        GLintPoint(150, 50)  # Bottom-right vertex
+    ]
 
     # closed=1 means GL_LINE_LOOP
     drawPolyLine(poly, closed=1)
