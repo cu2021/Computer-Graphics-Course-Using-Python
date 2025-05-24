@@ -17,25 +17,20 @@ class GLintPoint:
         self.y = y
 
 
-def drawRectangleCenter(center: GLintPoint, width: int, height: int):
+def drawRectangleCornerSize(topLeft: GLintPoint, width: int, aspectRatio: int):
     """
-    Draws a rectangle using a central point and given width and height.
+    Draws a rectangle given a top-left corner, width, and aspect ratio.
 
     Parameters:
-    - center: the central GLintPoint.
+    - topLeft: top-left corner as a GLintPoint.
     - width: width of the rectangle.
-    - height: height of the rectangle.
+    - aspectRatio: width divided by height (e.g., 2 means height = width/2).
     """
+    height = width // aspectRatio
+    bottomRightX = GLint(topLeft.x + width)
+    bottomRightY = GLint(topLeft.y - height)
 
-    # top-left x
-    x1 = GLint(center.x - (width//2))
-    y1 = GLint(center.y + (height//2))
-
-    # buttom-right
-    x2 = GLint(center.x + (width//2))
-    y2 = GLint(center.y - (height//2))
-
-    glRecti(x1, y1, x2, y2)
+    glRecti(topLeft.x, topLeft.y, bottomRightX, bottomRightY)
 
 
 def myInit():
@@ -53,11 +48,11 @@ def myInit():
 
 def myDisplay():
     """
-    GLUT display callback: clears the screen and draws a centered rectangle.
+    GLUT display callback: clears the screen and draws the rectangle.
     """
     glClear(GL_COLOR_BUFFER_BIT)
-    center = GLintPoint(300, 300)
-    drawRectangleCenter(center, width=80, height=80)
+    topLeftCorner = GLintPoint(300, 300)
+    drawRectangleCornerSize(topLeftCorner, width=80, aspectRatio=1)
     glFlush()
 
 
@@ -69,7 +64,7 @@ def main():
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB)
     glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT)
     glutInitWindowPosition(100, 150)
-    glutCreateWindow(b"Draw Rectangle from Center Point")
+    glutCreateWindow(b"Draw Rectangle from Corner with Aspect Ratio")
     glutDisplayFunc(myDisplay)
     myInit()
     glutMainLoop()
