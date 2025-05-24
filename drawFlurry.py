@@ -8,57 +8,65 @@ import sys
 WINDOW_WIDTH = 640
 WINDOW_HEIGHT = 480
 
-def drawFlurry(num: int, numColors: int, Width: int, Height: int ):
-    for i in range(num):
-        x1 = GLint(random.choice(range(0,Width)))
-        y1 = GLint(random.choice(range(0,Height)))
 
-        x2 = GLint(random.choice(range(0, Width)))
-        y2 = GLint(random.choice(range(0, Height)))
+def drawFlurry(num: int, numColors: int, width: int, height: int):
+    """
+    Draws a flurry of random rectangles with grayscale shades.
 
-        lev = GLfloat(random.choice(range(0, numColors))/10.0)
+    Parameters:
+    - num: number of rectangles to draw.
+    - numColors: the number of grayscale levels (e.g., 10 gives 0.0 to 0.9).
+    - width: width of the drawable area.
+    - height: height of the drawable area.
+    """
+    for _ in range(num):
+        x1 = GLint(random.randint(0, width))
+        y1 = GLint(random.randint(0, height))
 
+        x2 = GLint(random.randint(0, width))
+        y2 = GLint(random.randint(0, height))
+
+        # Grayscale color
+        lev = random.randint(0, numColors) / float(numColors)
+        lev = GLfloat(lev)
         glColor3f(lev, lev, lev)
+
         glRecti(x1, y1, x2, y2)
 
-        glFlush()
+    glFlush()
+
 
 def myInit():
     """
-    Initialize OpenGL settings: background color, drawing color,
-    line width, and 2D orthographic projection.
+    Initialize OpenGL settings: background color, line width,
+    and 2D orthographic projection.
     """
-    # Background color: white
-    glClearColor(1.0, 1.0, 1.0, 1.0)
-    # Default drawing color
-    glColor3f(0.0, 0.0, 0.0)
-    # Line width
+    glClearColor(1.0, 1.0, 1.0, 1.0)  # Background: white
+    glColor3f(0.0, 0.0, 0.0)          # Default drawing color
     glLineWidth(2.0)
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
-    gluOrtho2D(0, GLdouble(WINDOW_WIDTH), 0, GLdouble(WINDOW_HEIGHT))
+    gluOrtho2D(0, WINDOW_WIDTH, 0, WINDOW_HEIGHT)
 
 
 def myDisplay():
     """
-    GLUT display callback: clears the screen and draws two rectangles.
+    GLUT display callback: clears the screen and draws a flurry effect.
     """
     glClear(GL_COLOR_BUFFER_BIT)
-
-    drawFlurry(num=100, numColors=10, Width=WINDOW_WIDTH, Height=WINDOW_HEIGHT)
-    # Ensure all drawing commands are executed
+    drawFlurry(num=100, numColors=10, width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
     glFlush()
 
 
 def main():
     """
-    The main function to set up GLUT and run the application.
+    Main function to set up GLUT and run the application.
     """
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB)
     glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT)
     glutInitWindowPosition(100, 150)
-    glutCreateWindow(b"Draw Two Rectangles using glRecti")
+    glutCreateWindow(b"Draw Flurry of Rectangles")
     glutDisplayFunc(myDisplay)
     myInit()
     glutMainLoop()
