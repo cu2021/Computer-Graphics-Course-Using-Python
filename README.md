@@ -14,9 +14,16 @@ This repository contains a collection of examples and exercises developed for a 
 * **`BigDipper.py`**: Renders the Big Dipper constellation using coordinate data.
 * **`data/`**: Contains data files (e.g., `dino.dat`) used for polyline rendering.
 * **`MakingLineDrawings.py`**: Plots curves using line strips.
-* **`hardwireHouse.py`**: Drawing a house by defining all its vertices coordinates.
-* **`parameterizedHouse.py`**: Drawing a house by defining only the peak coordinates, the house width, and its height. 
-* **`drawPolyLine.py`**: Drawing Polyline using drawPolyLine Function. 
+* **`hardwireHouse.py`**: Draws a house by defining all its vertices coordinates.
+* **`parameterizedHouse.py`**: Draws a house by defining only the peak coordinates, the house width, and its height. 
+* **`drawPolyLine.py`**: Drawing Polyline using drawPolyLine Function.
+* **`drawingLinesUsingMoveToAndLineTo.py`**: Draws lines using custom `moveTo` and `lineTo` functions in a 2D space.
+* **`drawingChessBoard.py`**: Draws an 8x8 chessboard using OpenGL's `glRecti`, alternating square colors.
+* **`DrawTwoRectanglesUsing glRecti.py`**: Renders two filled rectangles using `glRecti` function.
+* **`drawFlurry.py`**: Generates a random flurry of shaded rectangles across the screen using `glRecti`.
+* **`drawRectangleCornerSize.py`**: Draws a rectangle from a given corner point with a specified width and aspect ratio.
+* **`drawRectangleFromCentralPoint.py`**: Draws a filled rectangle centered at a given point with specified width and height.
+* **`LargestRectangleWithAspectRatioR.py`**: Draws the largest possible filled rectangle within a 400x400 drawing area, scaled according to a user-specified aspect ratio R.
 
 ## 🛠️ Prerequisites
 
