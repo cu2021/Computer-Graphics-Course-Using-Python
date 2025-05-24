@@ -12,7 +12,7 @@ class GLintPoint:
     """
     Represents a 2D point with integer coordinates.
     """
-    def __init__(self, x: int = 0, y: int = 0):
+    def __init__(self, x: GLint = 0, y: GLint = 0):
         self.x = x
         self.y = y
 
