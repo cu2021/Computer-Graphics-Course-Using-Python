@@ -17,7 +17,7 @@ class GLintPoint:
         self.y = y
 
 
-def drawRectangleFromCenterPoint(center: GLintPoint, width: int, height: int):
+def drawRectangleCenter(center: GLintPoint, width: int, height: int):
     """
     Draws a rectangle using a central point and given width and height.
 
@@ -57,7 +57,7 @@ def myDisplay():
     """
     glClear(GL_COLOR_BUFFER_BIT)
     center = GLintPoint(300, 300)
-    drawRectangleFromCenterPoint(center, width=80, height=80)
+    drawRectangleCenter(center, width=80, height=80)
     glFlush()
 
 
