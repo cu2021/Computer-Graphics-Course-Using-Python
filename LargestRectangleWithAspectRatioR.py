@@ -33,12 +33,12 @@ def drawLagestRectWithAspectRatio():
         width = int(WINDOW_HEIGHT * R)
 
     # bottom-left corner
-    x1 = (WINDOW_WIDTH - width) // 2
-    y1 = (WINDOW_HEIGHT - height) // 2
+    x1 = int((WINDOW_WIDTH - width) // 2)
+    y1 = int((WINDOW_HEIGHT - height) // 2)
 
     # top-right corner
-    x2 = (x1 + width)
-    y2 = (y1 + height)
+    x2 = int(x1 + width)
+    y2 = int(y1 + height)
 
     # Draw filled rectangle
     glRecti(GLint(x1), GLint(y1), GLint(x2), GLint(y2))
