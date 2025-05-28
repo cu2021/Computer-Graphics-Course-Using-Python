@@ -24,6 +24,8 @@ This repository contains a collection of examples and exercises developed for a 
 * **`drawRectangleCornerSize.py`**: Draws a rectangle from a given corner point with a specified width and aspect ratio.
 * **`drawRectangleFromCentralPoint.py`**: Draws a filled rectangle centered at a given point with specified width and height.
 * **`LargestRectangleWithAspectRatioR.py`**: Draws the largest possible filled rectangle within a 400x400 drawing area, scaled according to a user-specified aspect ratio R.
+* **`DrawPolygon`**: Demonstrates `polygon` drawing technique using OpenGL.
+
 
 ## 🛠️ Prerequisites
 
