@@ -24,8 +24,9 @@ This repository contains a collection of examples and exercises developed for a 
 * **`drawRectangleCornerSize.py`**: Draws a rectangle from a given corner point with a specified width and aspect ratio.
 * **`drawRectangleFromCentralPoint.py`**: Draws a filled rectangle centered at a given point with specified width and height.
 * **`LargestRectangleWithAspectRatioR.py`**: Draws the largest possible filled rectangle within a 400x400 drawing area, scaled according to a user-specified aspect ratio R.
-* **`DrawPolygon`**: Demonstrates `polygon` drawing technique using OpenGL.
-
+* **`DrawPolygon.py`**: Demonstrates `polygon` drawing technique using OpenGL.
+* **`Interactive_creation_of_a_polyline.py`**: Draws Polyline using Mouse Clicks.
+* **`Freehand.py`**: Freehand Drawing with Mouse Movement.
 
 ## 🛠️ Prerequisites
 
