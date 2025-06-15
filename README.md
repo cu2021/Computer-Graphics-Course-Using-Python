@@ -32,6 +32,7 @@ This repository contains a collection of examples and exercises developed for a 
 * **`drawDinoAndShowItInViewport.py`**: Drawing a dino from file in a viewport.
 * **`ngon.py`**: Drawing Regular Polygons with N edges.
 * **`Rosette.py`**: Drawing Rosette diagrams.
+* **`ArcDrawing.py`**: Drawing Arcs.
 
 ## 🛠️ Prerequisites
 
