@@ -30,6 +30,7 @@ This repository contains a collection of examples and exercises developed for a 
 * **`Keyboard_interaction.py`**: Demonstrate keyboard Input and Drawing.
 * **`sincFunction.py`**: Demonstrating sinc function ploting using setWindow and setViewport.
 * **`drawDinoAndShowItInViewport.py`**: Drawing a dino from file in a viewport.
+* **`ngon.py`**: Drawing Regular Polygons with N edges.
 
 ## 🛠️ Prerequisites
 
