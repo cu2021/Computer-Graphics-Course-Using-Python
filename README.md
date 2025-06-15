@@ -28,6 +28,7 @@ This repository contains a collection of examples and exercises developed for a 
 * **`Interactive_creation_of_a_polyline.py`**: Draws Polyline using Mouse Clicks.
 * **`Freehand.py`**: Freehand Drawing with Mouse Movement.
 * **`Keyboard_interaction.py`**: Demonstrate keyboard Input and Drawing.
+* **`sincFunction.py`**: demonstrating sinc function ploting using setWindow and setViewport.
 
 ## 🛠️ Prerequisites
 
