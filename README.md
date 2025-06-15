@@ -33,6 +33,7 @@ This repository contains a collection of examples and exercises developed for a 
 * **`ngon.py`**: Drawing Regular Polygons with N edges.
 * **`Rosette.py`**: Drawing Rosette diagrams.
 * **`ArcDrawing.py`**: Drawing Arcs.
+* **`StellationDiagram.py`**: Drawing stellation diagrams.
 
 ## 🛠️ Prerequisites
 
