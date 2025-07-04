@@ -59,13 +59,18 @@ def ngon(N, radius):
         y =  radius*(math.sin(theta*c))
         points.append(Point2(x,y))
 
-    # Drawing
-    moveTo(points[0])
+    # # Drawing
+    # moveTo(points[0])
+    #
+    # for i in range(1,N):
+    #     lineTo(points[i])
+    #
+    # lineTo(points[0])
 
-    for i in range(1,N):
-        lineTo(points[i])
-
-    lineTo(points[0])
+    for i in range(0,N):
+        j = (i + 1) % N
+        moveTo(points[i])
+        lineTo(points[j])
 
 def myDisplay():
     glClear(GL_COLOR_BUFFER_BIT)
