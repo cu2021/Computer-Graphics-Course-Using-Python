@@ -35,7 +35,10 @@ This repository contains a collection of examples and exercises developed for a 
 * **`ArcDrawing.py`**: Drawing Arcs.
 * **`StellationDiagram.py`**: Drawing stellation diagrams.
 * **`Cohen-Sutherland.py`**: Cohen Sutherland algorithm implementation.
-* **`Cohen-Sutherlan-Case-study.py`**: add a case study on Cohen sutherland algorithm. The case-study is a window and a line. The parts which are outside the window will be in red color while the parts which lies inside the window in green color.
+* **`Cohen-Sutherlan-Case-study.py`**: Add a case study on Cohen sutherland algorithm. The case-study is a window and a line. The parts which are outside the window will be in red color while the parts which lies inside the window in green color.
+* **`TransformedHouse.py`**: Applying some transformations on house drawing.
+* **`TransformedDino.py`**: Using transformations to draw rotated dinos in circle view.
+* **`TransformedDino2.py`**: Using transformations to draw not rotated dinos in circle.
 
 ## 🛠️ Prerequisites
 
