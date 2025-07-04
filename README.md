@@ -34,6 +34,8 @@ This repository contains a collection of examples and exercises developed for a 
 * **`Rosette.py`**: Drawing Rosette diagrams.
 * **`ArcDrawing.py`**: Drawing Arcs.
 * **`StellationDiagram.py`**: Drawing stellation diagrams.
+* **`Cohen-Sutherland.py`**: Cohen Sutherland algorithm implementation.
+* **`Cohen-Sutherlan-Case-study.py`**: add a case study on Cohen sutherland algorithm. The case-study is a window and a line. The parts which are outside the window will be in red color while the parts which lies inside the window in green color.
 
 ## 🛠️ Prerequisites
 
