@@ -40,22 +40,29 @@ def translate2D(tx, ty):
     glMatrixMode(GL_MODELVIEW)
     glTranslated(tx, ty, 0.0)
 
+def rotate2D(angle):
+    glMatrixMode(GL_MODELVIEW)
+    glRotated(angle, 0, 0, 1)
+
 def myDisplay():
     glClear(GL_COLOR_BUFFER_BIT)
 
-    setViewport(0, 640, 0, 480)
-    setWindow(-2.0, 2.0, -2.0, 2.0)
+    # Set viewport and logical window
+    setViewport(0, 480, 0, 480)
+    setWindow(-2000.0, 2000.0, -2000.0, 2000.0)
 
     numMotifs = 12
-    radius = 1.0
     for i in range(numMotifs):
-        angle_rad = 2 * math.pi * i / numMotifs
-        x = radius * math.cos(angle_rad)
-        y = radius * math.sin(angle_rad)
-
+        angle = i * 360 / numMotifs
         initCT()
-        translate2D(x, y)
-        scale2D(0.001, 0.001)
+
+        # Rotate the whole coordinate system
+        rotate2D(angle)
+        # Move out to the circle
+        translate2D(0.0, 1000)
+        # Rotate dino back so it faces outward
+        rotate2D(-angle)
+
         drawDino("data/dino.dat")
 
     glFlush()
