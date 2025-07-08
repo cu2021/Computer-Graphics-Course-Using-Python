@@ -47,15 +47,14 @@ def myDisplay():
     glClear(GL_COLOR_BUFFER_BIT)
 
     # Set viewport and logical window
-    setViewport(0, 640, 0, 480)
-    setWindow(-2.0, 2.0, -2.0, 2.0)
+    setViewport(0, 480, 0, 480)
+    setWindow(-2000.0, 2000.0, -2000.0, 2000.0)
 
     numMotifs = 12
     for i in range(numMotifs):
         initCT()
         rotate2D(i * 360 / numMotifs)
-        translate2D(0.0, 0.80)
-        scale2D(0.001, 0.001)
+        translate2D(0.0, 800)
         drawDino("data/dino.dat")
 
     glFlush()
