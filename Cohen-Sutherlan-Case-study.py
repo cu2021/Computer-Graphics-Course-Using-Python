@@ -3,8 +3,10 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 import sys
 
-# Global click storage
+# Global variables
 clickedPoints = []
+linesToDraw = []  # stores tuples of (color, p1, p2)
+w = None  # clipping window
 
 def myInit():
     glClearColor(1.0, 1.0, 1.0, 0.0)
@@ -33,24 +35,24 @@ def outCodes(p: Point2, window: RealRect):
     if p.y < window.b: code |= 1
     return code
 
-def trivialAccept(p1_code, p2_code):
-    return p1_code == 0 and p2_code == 0
+def trivialAccept(c1, c2):
+    return c1 == 0 and c2 == 0
 
-def trivialReject(p1_code, p2_code):
-    return p1_code & p2_code != 0
+def trivialReject(c1, c2):
+    return (c1 & c2) != 0
 
 def clipSegment(p1: Point2, p2: Point2, w: RealRect):
     p1 = Point2(p1.x, p1.y)
     p2 = Point2(p2.x, p2.y)
 
     while True:
-        p1_code = outCodes(p1, w)
-        p2_code = outCodes(p2, w)
+        code1 = outCodes(p1, w)
+        code2 = outCodes(p2, w)
 
-        if trivialAccept(p1_code, p2_code):
+        if trivialAccept(code1, code2):
             return True, p1, p2
 
-        if trivialReject(p1_code, p2_code):
+        if trivialReject(code1, code2):
             return False, None, None
 
         if abs(p2.x - p1.x) < 1e-6:
@@ -58,32 +60,32 @@ def clipSegment(p1: Point2, p2: Point2, w: RealRect):
         else:
             m = (p2.y - p1.y) / (p2.x - p1.x)
 
-        if p1_code != 0:
+        if code1 != 0:
             x0, y0 = p1.x, p1.y
-            if p1_code & 8:
+            if code1 & 8:
                 p1.x = w.l
                 p1.y = m * (p1.x - x0) + y0 if m is not None else y0
-            elif p1_code & 4:
+            elif code1 & 4:
                 p1.y = w.t
                 p1.x = ((p1.y - y0) / m) + x0 if m not in (None, 0) else x0
-            elif p1_code & 2:
+            elif code1 & 2:
                 p1.x = w.r
                 p1.y = m * (p1.x - x0) + y0 if m is not None else y0
-            elif p1_code & 1:
+            elif code1 & 1:
                 p1.y = w.b
                 p1.x = ((p1.y - y0) / m) + x0 if m not in (None, 0) else x0
         else:
             x0, y0 = p2.x, p2.y
-            if p2_code & 8:
+            if code2 & 8:
                 p2.x = w.l
                 p2.y = m * (p2.x - x0) + y0 if m is not None else y0
-            elif p2_code & 4:
+            elif code2 & 4:
                 p2.y = w.t
                 p2.x = ((p2.y - y0) / m) + x0 if m not in (None, 0) else x0
-            elif p2_code & 2:
+            elif code2 & 2:
                 p2.x = w.r
                 p2.y = m * (p2.x - x0) + y0 if m is not None else y0
-            elif p2_code & 1:
+            elif code2 & 1:
                 p2.y = w.b
                 p2.x = ((p2.y - y0) / m) + x0 if m not in (None, 0) else x0
 
@@ -103,43 +105,64 @@ def drawLine(p1: Point2, p2: Point2):
 
 def myDisplay():
     glClear(GL_COLOR_BUFFER_BIT)
-
-    w = RealRect(100, 350, 350, 100)
-
     glColor3f(0.0, 0.0, 1.0)
     drawRect(w)
 
-    if len(clickedPoints) == 2:
-        p1, p2 = clickedPoints
-        glColor3f(1.0, 0.0, 0.0)
+    for color, p1, p2 in linesToDraw:
+        glColor3f(color[0], color[1], color[2])
         drawLine(p1, p2)
-
-        accept, clipped_p1, clipped_p2 = clipSegment(p1, p2, w)
-        if accept:
-            glColor3f(0.0, 1.0, 0.0)
-            drawLine(clipped_p1, clipped_p2)
 
     glFlush()
 
 def myMouse(button, state, x, y):
-    global clickedPoints
+    global clickedPoints, linesToDraw  # Include both variables here
+
     if button == GLUT_LEFT_BUTTON and state == GLUT_DOWN:
-        if len(clickedPoints) < 2:
-            x = x
-            y = 480 - y
-            clickedPoints.append(Point2(x, y))
-            glutPostRedisplay()
-        else:
-            clickedPoints.clear()
-            glutPostRedisplay()
+        y = 480 - y
+        clickedPoints.append(Point2(x, y))
+
+        if len(clickedPoints) == 2:
+            p1, p2 = clickedPoints
+            red = (1.0, 0.0, 0.0)
+            linesToDraw.append((red, p1, p2))
+
+            accept, cp1, cp2 = clipSegment(p1, p2, w)
+            if accept:
+                green = (0.0, 1.0, 0.0)
+                linesToDraw.append((green, cp1, cp2))
+
+            clickedPoints = []
+
+            # Redraw everything manually here
+            glClear(GL_COLOR_BUFFER_BIT)
+            glColor3f(0.0, 0.0, 1.0)
+            drawRect(w)
+
+            for color, p1, p2 in linesToDraw:
+                glColor3f(*color)
+                drawLine(p1, p2)
+
+            glFlush()
+
+    elif button == GLUT_RIGHT_BUTTON and state == GLUT_DOWN:
+        linesToDraw = []
+        clickedPoints = []
+
+        glClear(GL_COLOR_BUFFER_BIT)
+        glColor3f(0.0, 0.0, 1.0)
+        drawRect(w)
+        glFlush()
+
 
 def main():
+    global w
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB)
     glutInitWindowSize(640, 480)
     glutInitWindowPosition(100, 100)
     glutCreateWindow(b"Cohen-Sutherland Line Clipping (Mouse Input)")
     myInit()
+    w = RealRect(100, 350, 350, 100)
     glutDisplayFunc(myDisplay)
     glutMouseFunc(myMouse)
     glutMainLoop()
